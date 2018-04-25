@@ -1,0 +1,31 @@
+/*MyTable组件样式表*/
+.myTable{
+    width: 100%;
+    border:2px solid #000;
+    border-spacing: 0;
+}
+
+.myTable-caption{
+    width:100%;
+    height: 30px;
+    font-size: 20px;
+    font-weight: bolder;
+}
+
+.myTable tr{
+    height: 30px;
+    width:100%;
+    border: 1px solid #000000;
+}
+
+.myTable tr th{
+    height: 30px;
+    text-align: center;
+    border: 1px solid #000000;
+}
+
+.myTable td{
+    height: 30px;
+    text-align: center;
+    border: 1px solid #000000;
+}

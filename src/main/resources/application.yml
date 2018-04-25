@@ -1,0 +1,31 @@
+server:
+  port: 8080
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://rm-bp1k98u8smxs0rc3muo.mysql.rds.aliyuncs.com:3306/walktogether?characterEncoding=utf-8&useSSL=false
+    username: myproject
+    password: xwd0323@
+    type: com.alibaba.druid.pool.DruidDataSource
+  redis:
+    host: localhost
+    port: 6379
+    jedis:
+      pool:
+        max-active: 8
+        max-wait: -1
+        min-idle: 0
+        max-idle: 8
+  thymeleaf:
+    prefix: classpath:/rea/public/
+
+
+
+
+
+mybatis:
+  mapper-locations: classpath*:mapper/**/**.xml
+  type-aliases-package: com.ztesoft.pojo
+
+
+

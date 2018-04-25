@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ztesoft.dao.admin.AdminMapper">
+    <resultMap id="BaseResultMap" type="com.ztesoft.pojo.admin.Admin" >
+        <constructor >
+            <arg column="uuid" jdbcType="VARCHAR" javaType="java.lang.String" />
+            <arg column="account" jdbcType="VARCHAR" javaType="java.lang.String" />
+            <arg column="password" jdbcType="VARCHAR" javaType="java.lang.String" />
+            <arg column="create_time" jdbcType="DATE" javaType="java.util.Date" />
+        </constructor>
+    </resultMap>
+
+    <sql id="select_all">
+        uuid,account,password,create_time
+    </sql>
+    <insert id="userRegister">
+        INSERT INTO admin
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            uuid,
+            <if test="account != null and account != ''">
+                account,
+            </if>
+            <if test="password != null and password != ''">
+                password,
+            </if>
+            create_time
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            #{uuid},
+            <if test="account != null and account != ''">
+                #{account},
+            </if>
+            <if test="password != null and password != ''">
+                #{password},
+            </if>
+            now()
+        </trim>
+    </insert>
+
+    <update id="updateAdminByAccount">
+        UPDATE admin
+        SET password = #{password},create_time = now()
+        where account = #{account}
+    </update>
+
+    <delete id="deleteAdminByAccount">
+        DELETE from admin where account = #{account}
+    </delete>
+
+
+    <select id="getAdminList" resultType="com.ztesoft.pojo.admin.Admin">
+        select * from admin;
+    </select>
+    <select id="getAdminByAccount" resultType="com.ztesoft.pojo.admin.Admin">
+        SELECT uuid,account,password,create_time
+        from admin
+         where account = #{account}
+    </select>
+
+
+</mapper>
